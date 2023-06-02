@@ -45,9 +45,24 @@ export const StateContext = ({ children }) => {
   const toggleCartItemQuantity = (id, value) => {
     foundProduct = cartItems.find((item) => item._id === id);
     index = cartItems.findIndex((product) => product._id === id);
-
+    const newCartItems = cartItems;
     if (value === 'inc') {
+      newCartItems.map(
+        (item) => item._id === id && (item.quantity = foundProduct.quantity + 1)
+      );
+      setCartItems([...newCartItems]);
+      setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price);
+      setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + 1);
     } else if (value === 'dec') {
+      if (foundProduct.quantity > 1) {
+        newCartItems.map(
+          (item) =>
+            item._id === id && (item.quantity = foundProduct.quantity - 1)
+        );
+        setCartItems([...newCartItems]);
+        setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price);
+        setTotalQuantities((prevTotalQuantities) => prevTotalQuantities - 1);
+      }
     }
   };
 
@@ -75,6 +90,7 @@ export const StateContext = ({ children }) => {
         incQty,
         decQty,
         onAdd,
+        toggleCartItemQuantity,
       }}
     >
       {children}
