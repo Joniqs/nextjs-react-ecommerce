@@ -17,8 +17,12 @@ export default async function handler(req, res) {
         line_items: req.body.map((item) => {
           const img = item.image[0].asset._ref;
           const newImage = img
-            .replace('image-', 'https://cdn.sanity.io/zxx8eftd/production/')
-            .replace('-webp', '.webp');
+            .replace(
+              'image-',
+              'https://cdn.sanity.io/images/zxx8eftd/production/'
+            )
+            .replace('-webp', '.webp')
+            .replace('-jpeg', '.jpg');
 
           return {
             price_data: {
