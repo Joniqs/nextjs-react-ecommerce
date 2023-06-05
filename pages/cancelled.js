@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { BsBagCheckFill } from 'react-icons/bs';
 
 import { useStateContext } from '../context/StateContext';
-import { runFireworks } from '../lib/utils';
 
 const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
@@ -13,7 +12,6 @@ const Success = () => {
     setCartItems([]);
     setTotalPrice(0);
     setTotalQuantities(0);
-    runFireworks();
   }, []);
 
   return (
@@ -22,8 +20,7 @@ const Success = () => {
         <p className='icon'>
           <BsBagCheckFill />
         </p>
-        <h2>Thank You for your order!</h2>
-        <p className='email-msg'>Check your email inbox for the receipt.</p>
+        <h2>Something went wrong !</h2>
         <p className='description'>
           If you have any questions, please email
           <a className='email' href='mailto:kwiatkowskijonatan.jobs@gmail.com'>
