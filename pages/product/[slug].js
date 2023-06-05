@@ -11,7 +11,6 @@ import { Product } from '../../components';
 import { useStateContext } from '../../context/StateContext';
 
 const ProductDetails = ({ product, products }) => {
-  console.log(product);
   const { image, name, details, price } = product;
   const [index, setIndex] = useState(0);
   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
@@ -59,7 +58,7 @@ const ProductDetails = ({ product, products }) => {
             </div>
             <p>(20)</p>
           </div>
-          <h4>Details:: </h4>
+          <h4>Details: </h4>
           <p>{details}</p>
           <p className='price'>£{price}</p>
           <div className='quantity'>
